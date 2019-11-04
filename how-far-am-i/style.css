@@ -1,0 +1,10 @@
+#distanceMap {
+    height: 20rem;
+    margin: 1rem;
+}
+
+@media only screen and (min-width: 35rem) {
+    #distanceMap {
+        height: 40rem;
+    }
+}
