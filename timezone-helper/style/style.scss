@@ -8,20 +8,17 @@ body {
 #container {
     display: grid;
     background-color: rgb(28, 54, 138);
-    // width: 30rem;
-    // align-items: center;
     justify-content: center;
     justify-items: center;
 }
 
 #result-container {
     background-color: rgb(55, 255, 255);
-    height: 1rem;
-    width: 85%;
+    height: 2rem;
+    width: 80%;
     padding: 1rem;
     margin: 1rem;
     text-align: center;
-    text
 }
 
 #input-container {
@@ -31,6 +28,7 @@ body {
 
 #search-latlong {
     display: flex;
+    flex-direction: column;
     align-items: center;
     input {
         width: 49%;
@@ -51,18 +49,39 @@ body {
 }
 
 input[type=text] {
-    padding: 1rem 2rem;
+    padding: 0.75rem 1rem;
     font-size: 1rem;
     margin: 0.5rem;
 }
 
 #places-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     .btn {
         background-color: crimson;
     }
     .random-places-btn {
         background-color: rgb(170, 32, 140);
+    }
+}
+
+@media only screen and (min-width: 22rem) {
+    #search-latlong {
+        flex-direction: column;
+    }
+    #places-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media only screen and (min-width: 35rem) {
+    #result-container {
+        height: 1rem;
+    }
+    #search-latlong {
+        flex-direction: row;
+    }
+    #places-container {
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }
