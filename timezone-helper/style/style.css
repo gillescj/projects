@@ -1,0 +1,84 @@
+body {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #001a33;
+}
+
+#container {
+  display: -ms-grid;
+  display: grid;
+  background-color: #1c368a;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  justify-items: center;
+}
+
+#result-container {
+  background-color: #37ffff;
+  height: 1rem;
+  width: 85%;
+  padding: 1rem;
+  margin: 1rem;
+  text-align: center;
+}
+
+#input-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#search-latlong {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#search-latlong input {
+  width: 49%;
+}
+
+.btn {
+  padding: 1rem 1.5rem;
+  border: none;
+  font-size: 1rem;
+  margin: 1rem;
+  color: white;
+  background-color: #0080ff;
+  border-radius: 0.5rem;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  cursor: pointer;
+}
+
+input[type=text] {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  margin: 0.5rem;
+}
+
+#places-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+}
+
+#places-container .btn {
+  background-color: crimson;
+}
+
+#places-container .random-places-btn {
+  background-color: #aa208c;
+}
+/*# sourceMappingURL=style.css.map */

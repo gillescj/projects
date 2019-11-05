@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style/style.css">
+    <script src="tz-lookup/tz.js"></script>
+    <script src="timezones.js"></script>
+    <script src="script.js" defer></script>
+    <title>Timezones</title>
+
+</head>
+
+<body>
+    <div id="container">
+        <div id="result-container">
+            <span id="time-result"></span>
+        </div>
+        <div id="input-container">
+            <input readonly type="text" name="Enter Location..." id="search-address" placeholder="Address... Not Available Yet">
+            <div id="search-latlong">
+                <input type="text" name="search-lat" id="search-lat" placeholder="Latitude...">
+                <input type="text" name="search-long" id="search-long" placeholder="Longitude...">
+            </div>
+            <input type="button" class="btn" value="GO" onclick="getTimezone()">
+            <div id="places-container">
+                <input type="button" class="places-btn btn" id="b0" value="Brussels" data-timezone="Europe/Brussels" onclick="placesLocation(this)">
+                <input type="button" class="places-btn btn" id="b1" value="Melbourne" data-timezone="Australia/Melbourne" onclick="placesLocation(this)">
+                <input type="button" class="places-btn btn" id="b2" value="Auckland" data-timezone="Pacific/Auckland" onclick="placesLocation(this)">
+                <input type="button" class="places-btn btn" id="b3" value="Anchorage" data-timezone="America/Anchorage" onclick="placesLocation(this)">
+                <input type="button" class="places-btn btn" id="b4" value="Singapore" data-timezone="Asia/Singapore" onclick="placesLocation(this)">
+                <input type="button" class="places-btn btn" id="b5" value="Edmonton" data-timezone="America/Edmonton" onclick="placesLocation(this)">
+                <input type="button" class="places-btn btn" id="b6" value="Tokyo" data-timezone="Asia/Tokyo" onclick="placesLocation(this)">
+                <input type="button" class="places-btn btn" id="b7" value="Honolulu" data-timezone="Pacific/Honolulu" onclick="placesLocation(this)">
+                <input type="button" class="random-places-btn btn" id="b8" value="Random" onclick="placesRanLocation()">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
