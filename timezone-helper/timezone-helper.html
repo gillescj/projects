@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="tz-lookup/tz.js"></script>
     <script src="timezones.js"></script>
     <script src="script.js" defer></script>
@@ -16,15 +17,18 @@
 <body>
     <div id="container">
         <div id="result-container">
-            <span id="time-result"></span>
+            <!-- <span id="time-result"></span> -->
         </div>
         <div id="input-container">
-            <input readonly type="text" name="Enter Location..." id="search-address" placeholder="Address... Not Available Yet">
+            <input type="text" name="Enter Location..." id="search-address" placeholder="Address...">
             <div id="search-latlong">
-                <input type="text" name="search-lat" id="search-lat" placeholder="Latitude...">
-                <input type="text" name="search-long" id="search-long" placeholder="Longitude...">
+                <input type="text" name="search-lat" id="search-lat" placeholder="Latitude">
+                <input type="text" name="search-long" id="search-long" placeholder="Longitude">
             </div>
-            <input type="button" class="btn" value="GO" onclick="getTimezone()">
+            <div id="search-buttons">
+                <input type="button" class="btn" value="Search Address" onclick="getTimezone('address')">
+                <input type="button" class="btn" value="Search Coordinates" onclick="getTimezone('coords')">
+            </div>
             <div id="places-container">
                 <input type="button" class="places-btn btn" id="b0" value="Brussels" data-timezone="Europe/Brussels" onclick="placesLocation(this)">
                 <input type="button" class="places-btn btn" id="b1" value="Melbourne" data-timezone="Australia/Melbourne" onclick="placesLocation(this)">

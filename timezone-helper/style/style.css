@@ -1,7 +1,7 @@
 body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  margin: 2rem;
+  margin: 1rem;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #001a33;
 }
@@ -17,12 +17,14 @@ body {
 }
 
 #result-container {
-  background-color: #37ffff;
+  background-color: #252525;
   height: 2rem;
   width: 80%;
   padding: 1rem;
   margin: 1rem;
   text-align: center;
+  font-weight: bold;
+  color: white;
 }
 
 #input-container {
@@ -65,10 +67,27 @@ body {
   cursor: pointer;
 }
 
+.btn:hover {
+  background-color: #252525;
+}
+
 input[type=text] {
   padding: 0.75rem 1rem;
   font-size: 1rem;
   margin: 0.5rem;
+}
+
+#search-buttons {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  grid-gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+#search-buttons .btn {
+  margin: 0;
 }
 
 #places-container {
@@ -76,14 +95,25 @@ input[type=text] {
   display: grid;
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
+  grid-gap: 1rem;
+  margin: 1rem;
 }
 
 #places-container .btn {
   background-color: crimson;
+  margin: 0rem;
+}
+
+#places-container .btn:hover {
+  background-color: #252525;
 }
 
 #places-container .random-places-btn {
   background-color: #aa208c;
+}
+
+#places-container .random-places-btn:hover {
+  background-color: #252525;
 }
 
 @media only screen and (min-width: 22rem) {
@@ -100,14 +130,15 @@ input[type=text] {
 }
 
 @media only screen and (min-width: 35rem) {
-  #result-container {
-    height: 1rem;
-  }
   #search-latlong {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
+  }
+  #search-buttons {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
   }
   #places-container {
     -ms-grid-columns: 1fr 1fr 1fr;

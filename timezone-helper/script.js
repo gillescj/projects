@@ -3,48 +3,48 @@ const addressInput = document.getElementById('search-address');
 const latInput = document.getElementById('search-lat');
 const longInput = document.getElementById('search-long');
 
-const timeResult = document.getElementById('time-result');
-
-// bingGeocoder.geocode('1600 Pennsylvania Ave NW, Washington, DC', function(result) {
-//     console.log(result);
-// });
-
-// bingGeocoder.geodecode("44.915", "-93.21", function(result) {
-//     console.log(result);
-// });
+const timeResult = document.getElementById('result-container');
 
 
-function getLocation() {
-    var bingGeocoder = new GeocoderJS.createGeocoder({
-        provider: 'bing',
-        apiKey: 'As11PsBXYvAoGEXmz59ZWl93T8_OACdXi2QnRKWMRIUK6hzOXgN3BcZHnbKyPZYo'
-    });
 
-    var address = document.getElementById('search-address').value;
-
-    var test = bingGeocoder.geocode(address);
-    return test;
-    // function(result) {
-    // return {
-    //     lat: result[0].latitude,
-    //     long: result[0].longitude
-    // }
-    // console.log(result[0].latitude);
-    // console.log(typeof(result));
-}
-
-function getTimezone() {
-    if (addressInput === null | addressInput.value === '') {
+function getTimezone(selection) {
+    if (selection === 'coords') {
         var location = {
             lat: latInput.value,
             long: longInput.value
+        };
+        try { timezone = tzlookup(location.lat, location.long); } catch {
+            // timezone = tzlookup(0, 0);
+            timeResult.innerHTML = "Could not find Coordinates";
+            return;
         }
+
+        var time = new Date().toLocaleString("en-US", { timeZone: timezone });
+        timeResult.innerHTML = time + " in " + timezone;
+        addressInput.value = '';
+
+    } else {
+        var address = addressInput.value.replace(" ", "+");
+        var url = "https://nominatim.openstreetmap.org/search?q=" + address + "&format=json&addressdetails=1";
+        fetch(url)
+            .then(function(data) { return data.json(); })
+            .then(function(res) {
+
+                var location = {
+                    lat: res[0].lat,
+                    long: res[0].lon
+                };
+
+                timezone = tzlookup(location.lat, location.long);
+                var time = new Date().toLocaleString("en-US", { timeZone: timezone });
+                timeResult.innerHTML = time + " in " + timezone;
+                latInput.value = location.lat;
+                longInput.value = location.long;
+            })
+            .catch(function() {
+                timeResult.innerHTML = "Could not find Address";
+            });
     }
-    // var location = [44.915, -93.21];
-    // console.log(location);
-    timezone = tzlookup(location.lat, location.long);
-    var time = new Date().toLocaleString("en-US", { timeZone: timezone });
-    timeResult.innerHTML = time + " in " + timezone;
 }
 
 // On places button click show date and time info
@@ -52,18 +52,45 @@ function placesLocation(place) {
     var timezone = place.getAttribute("data-timezone");
     var time = new Date().toLocaleString("en-US", { timeZone: timezone });
     timeResult.innerHTML = time + " in " + timezone;
+    addressInput.value = '';
+    latInput.value = '';
+    longInput.value = '';
 }
 
 function placesRanLocation() {
     var randomPlace = allTimezones[Math.floor(Math.random() * allTimezones.length)];
     var time = new Date().toLocaleString("en-US", { timeZone: randomPlace });
     timeResult.innerHTML = time + " in " + randomPlace;
+    addressInput.value = '';
+    latInput.value = '';
+    longInput.value = '';
 }
 
+// var url = "https://nominatim.openstreetmap.org/search?q=135+pilkington+avenue,+birmingham&format=json&addressdetails=1";
+
+// // var response = fetch(url);
+// // var myJson = response.json();
+// // console.log(myJson);
 
 
+// function testFun() {
+//     fetch(url)
+//         .then(function(data) { return data.json() })
+//         .then(function(res) {
+//             console.log(res);
+//             console.log(res.length);
+//             console.log(res[0].lat);
+//             return res;
+//         });
+// }
 
+// console.log(test[0].lat);
 
+// $.getJSON(url, function(result) {
+//         console.log(long);
+//     }
+
+// )
 
 // 1: Find geocode service to convert address to latlong
 // 2: Find timezone service to find UTC offset for latlong
