@@ -116,6 +116,17 @@ input[type=text] {
   background-color: #252525;
 }
 
+#attribution {
+  font-size: 0.8rem;
+  color: white;
+}
+
+#attribution a {
+  text-decoration: none;
+  color: crimson;
+  font-weight: bold;
+}
+
 @media only screen and (min-width: 22rem) {
   #search-latlong {
     -webkit-box-orient: vertical;
